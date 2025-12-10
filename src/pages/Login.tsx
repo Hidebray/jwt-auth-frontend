@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { Lock, User as UserIcon, AlertCircle } from 'lucide-react';
-import { LoginCredentials } from '../types';
+import type { LoginCredentials } from '../types';
 
 const Login: React.FC = () => {
   const { login } = useAuth();

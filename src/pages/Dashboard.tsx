@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { axiosClient } from '../api/axiosClient';
 import { useAuth } from '../context/AuthContext';
 import { User, LogOut, RefreshCw, Database } from 'lucide-react';
-import { User as UserType } from '../types';
+import type { User as UserType } from '../types';
 
 const Dashboard: React.FC = () => {
   const { logout: logoutContext, user: authUser } = useAuth();
