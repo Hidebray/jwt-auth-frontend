@@ -15,7 +15,7 @@ const Dashboard: React.FC = () => {
   // Hàm thêm log vào màn hình
   const addLog = (message: string) => {
     const time = new Date().toLocaleTimeString();
-    setLogs(prev => [`[${time}] ${message}`, ...prev]);
+    setLogs(prev => [...prev, `[${time}] ${message}`]);
   };
 
   // Tự động cuộn khi có log mới
