@@ -25,6 +25,19 @@ const Dashboard: React.FC = () => {
     }
   }, [logs]);
 
+  useEffect(() => {
+    // Hàm xử lý khi nghe thấy tín hiệu 401
+    const handle401 = () => {
+      addLog('⚠️ Interceptor caught 401! Auto-refreshing token...');
+    };
+
+    // Đăng ký lắng nghe
+    window.addEventListener('auth:401', handle401);
+
+    // Dọn dẹp khi component bị hủy
+    return () => window.removeEventListener('auth:401', handle401);
+  }, []); // Chạy 1 lần khi mount
+
   // Fetch profile data
   const { data: profile, isLoading, isError, error, refetch, isFetching } = useQuery({
     queryKey: ['profile'],
@@ -64,7 +77,6 @@ const Dashboard: React.FC = () => {
   });
 
   const handleManualRefresh = () => {
-     addLog('🖱️ User clicked "Fetch Data" button.');
      refetch();
   };
 

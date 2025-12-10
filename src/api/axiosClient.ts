@@ -46,6 +46,7 @@ axiosClient.interceptors.response.use(
 
     // Nếu lỗi 401 và chưa từng thử refresh
     if (error.response?.status === 401 && !originalRequest._retry) {
+      window.dispatchEvent(new Event('auth:401'));
       if (isRefreshing) {
         // Nếu đang có tiến trình refresh khác chạy, xếp hàng chờ
         return new Promise((resolve, reject) => {
